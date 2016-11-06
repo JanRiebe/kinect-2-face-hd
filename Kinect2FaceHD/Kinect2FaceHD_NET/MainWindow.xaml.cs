@@ -66,10 +66,13 @@ namespace Kinect2FaceHD_NET
             }
 
             GC.SuppressFinalize(this);
+
+            _sensor.Close();
         }
 
         private void BodyReader_FrameArrived(object sender, BodyFrameArrivedEventArgs e)
         {
+            Console.WriteLine("Frame arrived");
             using (var frame = e.FrameReference.AcquireFrame())
             {
                 if (frame != null)
